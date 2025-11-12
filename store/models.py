@@ -7,9 +7,11 @@ class Product(models.Model):
     price = models.DecimalField(decimal_places=2, max_digits=6)
     updated_at = models.DateTimeField(auto_now=True)
     inventory = models.PositiveIntegerField()
+    # product_set
 
 class Collection(models.Model):
     title = models.CharField(max_length=100)
+    products = models.ForeignKey(Product, on_delete=models.CASCADE)
 
 class Cart(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
