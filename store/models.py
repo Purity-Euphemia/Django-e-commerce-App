@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.conf import settings
 # Create your models here.
 class Product(models.Model):
     title = models.CharField(max_length=100)
@@ -28,6 +28,7 @@ class Order(models.Model):
         ('F', 'Filled'),
     )
     #user
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
     placed_at = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=1, choices=ORDER_STATUS, default='P')
     cart = models.ForeignKey(Cart, on_delete=models.PROTECT)
