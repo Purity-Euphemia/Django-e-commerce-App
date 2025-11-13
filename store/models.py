@@ -7,6 +7,9 @@ class Product(models.Model):
     price = models.DecimalField(decimal_places=2, max_digits=6)
     updated_at = models.DateTimeField(auto_now=True)
     inventory = models.PositiveIntegerField()
+
+    def __str__(self):
+        return self.title
     # product_set
 
 class Collection(models.Model):
